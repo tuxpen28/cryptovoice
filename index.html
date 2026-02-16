@@ -602,12 +602,12 @@
   <div class="container">
     <div class="badge">
       <span class="badge-dot"></span>
-      Launching Phase 1 — Auto-Invoicing
+      Early access — Limited spots
     </div>
     <h1>Get paid in crypto.<br><span class="gradient-text">Stay compliant.</span></h1>
     <p>The payments toolkit for crypto freelancers. Turn on-chain transactions into professional, tax-compliant invoices — automatically.</p>
     <div class="hero-cta">
-      <a href="#waitlist" class="btn btn-primary">Join the Waitlist →</a>
+      <a href="#pricing" class="btn btn-primary">Get Early Access →</a>
       <a href="#roadmap" class="btn btn-ghost">See the roadmap</a>
     </div>
 
@@ -730,22 +730,9 @@
 
     <div class="pricing-cards">
       <div class="price-card">
-        <div class="price-tag">Starter</div>
-        <h3>Free</h3>
-        <p class="desc">Get started, no card needed</p>
-        <ul>
-          <li>1 wallet address</li>
-          <li>5 invoices / month</li>
-          <li>1 chain (Ethereum)</li>
-          <li>PDF export</li>
-          <li>Basic templates</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-ghost btn-full">Get started</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-tag">Pro</div>
+        <div class="price-tag">Pay with Card</div>
         <h3>$9 <span>/mo</span></h3>
-        <p class="desc">For active freelancers</p>
+        <p class="desc">Via Stripe — simple & familiar</p>
         <ul>
           <li>Unlimited wallets & chains</li>
           <li>Unlimited invoices</li>
@@ -756,7 +743,37 @@
           <li>Email delivery</li>
           <li>Priority support</li>
         </ul>
-        <a href="#waitlist" class="btn btn-primary btn-full">Join waitlist</a>
+        <a href="STRIPE_LINK_PLACEHOLDER" class="btn btn-ghost btn-full" id="stripe-btn">Pay with Card →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">Pay with Crypto — Save 22%</div>
+        <h3>$7 <span>/mo in USDC</span></h3>
+        <p class="desc">Crypto-native? Get rewarded for it.</p>
+        <ul>
+          <li>Everything in Card tier</li>
+          <li>22% discount — always</li>
+          <li>Pay in USDC on Base or Polygon</li>
+          <li>No KYC, no middlemen</li>
+          <li>Lifetime early adopter perks</li>
+        </ul>
+        <a href="#pay-crypto" class="btn btn-primary btn-full" id="crypto-btn">Pay with Crypto →</a>
+      </div>
+    </div>
+
+    <!-- Crypto payment modal -->
+    <div id="crypto-modal" style="display:none; margin-top: 32px;">
+      <div class="price-card" style="max-width: 480px; margin: 0 auto; text-align: left;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Pay with USDC</h3>
+        <p class="desc">Send exactly <strong style="color: var(--green);">7 USDC</strong> to the address below on Base or Polygon.</p>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; font-family: monospace; font-size: 0.82rem; word-break: break-all; margin-bottom: 16px; color: var(--accent-light);" id="pay-address">
+          WALLET_ADDRESS_PLACEHOLDER
+        </div>
+        <button class="btn btn-ghost btn-full" onclick="navigator.clipboard.writeText(document.getElementById('pay-address').textContent.trim())" style="margin-bottom: 16px; font-size: 0.84rem;">📋 Copy Address</button>
+        <div style="margin-bottom: 16px;">
+          <label style="font-size: 0.84rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Your email (to receive access)</label>
+          <input type="email" id="crypto-email" placeholder="you@example.com" style="width:100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-family: inherit; outline: none;">
+        </div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); text-align: center;">After sending, we'll detect your payment on-chain and email your access link within minutes.</p>
       </div>
     </div>
   </div>
@@ -764,13 +781,12 @@
 
 <section class="waitlist" id="waitlist">
   <div class="container">
-    <h2>Ready to ditch the spreadsheets?</h2>
-    <p>Join the waitlist. Early adopters get 3 months of Pro free.</p>
-    <form class="waitlist-form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
-      <input type="email" name="email" placeholder="you@example.com" required>
-      <button type="submit" class="btn btn-primary">Join Waitlist →</button>
-    </form>
-    <p class="early-note"><span>🎁 First 50 signups</span> — 3 months Pro, on us.</p>
+    <h2>Stop losing money to bad invoicing.</h2>
+    <p>Get early access now. First 50 customers get lifetime early adopter pricing.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">Get Early Access — from $7/mo →</a>
+    </div>
+    <p class="early-note"><span>🎁 Pay with crypto</span> and save 22% forever.</p>
   </div>
 </section>
 
@@ -784,5 +800,13 @@
   </footer>
 </div>
 
+<script>
+document.getElementById('crypto-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  var modal = document.getElementById('crypto-modal');
+  modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+  modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>
 </body>
 </html>
