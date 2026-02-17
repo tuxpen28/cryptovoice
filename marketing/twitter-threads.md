@@ -1,143 +1,129 @@
-# Twitter/X Content for @cryptoslip
+# Twitter/X Content for @cryptoslipxyz
 
 ## Launch Thread (Pin this)
 
-🧵 1/ I've been freelancing in crypto for years. Getting paid in USDC is great. 
+🧵 1/ I've been freelancing in crypto for a while. Getting paid in USDC? Great.
 
-Doing invoices for it? Nightmare.
+Making invoices for those payments? Absolute pain.
 
-So I built something. Meet @cryptoslip 👇
-
----
-
-2/ The problem: You get paid $5,000 in USDC on Polygon. Cool.
-
-Now you need:
-- An invoice with the right FX rate on that exact date
-- Your client's details filled in
-- Tax-compliant format for your country
-- A PDF to send your accountant
-
-That's 30 min per payment. Every time.
+So I built @cryptoslipxyz 👇
 
 ---
 
-3/ CryptoSlip fixes this.
+2/ Here's what happens every time you get paid in crypto:
 
-Paste your wallet address → we scan the chain → match transactions to clients → generate professional invoices.
+You receive $5,000 in USDC on Polygon. Nice.
 
-What used to take hours now takes seconds.
+Now you need an invoice with:
+- The EUR exchange rate from that specific day
+- Client details
+- Proper tax format for your country
+- A PDF for your accountant
 
----
-
-4/ And yes — it handles the annoying stuff:
-
-✅ Auto FX conversion at transaction-date rates
-✅ EU VAT, German Kleinunternehmer, US 1099, UK HMRC templates  
-✅ Multi-chain (ETH, Polygon, Arbitrum, Base, Solana)
-✅ Client auto-detection from recurring addresses
-✅ PDF export with your branding
+That eats 30 minutes. Per payment.
 
 ---
 
-5/ We're crypto-native, so naturally:
+3/ CryptoSlip does this for you.
 
-💳 Pay with card: $9/mo
-⚡ Pay with USDC: $7/mo (22% off, forever)
+Paste your wallet address. It scans the chain, finds your transactions, matches them to clients you've set up, and spits out invoices.
 
-We practice what we preach.
+Done.
 
 ---
 
-6/ Early access is live now.
+4/ It handles the stuff you always forget:
 
-First 50 customers get lifetime early adopter pricing.
+- FX rate from the actual transaction date (not "roughly $1")
+- EU VAT reverse charge, German Kleinunternehmer, US 1099
+- Works on ETH, Polygon, Arbitrum, Base, Solana
+- Remembers your repeat clients
+
+---
+
+5/ Pricing, because you're going to ask:
+
+💳 Card: $9/mo
+⚡ USDC: $7/mo
+
+If you're building for crypto people you should probably accept crypto. So we do. And you save money for it.
+
+---
+
+6/ Early access is open.
+
+First 50 people get that pricing locked in permanently.
 
 → https://cryptoslip.xyz
 
-If you freelance in crypto and invoicing is a pain, this is for you. 🧾⚡
+If invoicing crypto payments has ever made you want to throw your laptop, this might help.
 
 ---
 
-## Standalone Tweets (Post 1-2 per day)
+## Standalone Tweets (1-2 per day)
 
-### Tweet A (Pain point)
-Freelancer math:
+### Tweet A
+Getting paid in crypto: 2 seconds.
+Creating the invoice: 45 minutes.
 
-Getting paid in crypto: 2 seconds ✅
-Creating the invoice for it: 45 minutes ❌
+One of these is a problem. We fixed it → cryptoslip.xyz
 
-We fixed the second part → cryptoslip.xyz
+### Tweet B
+Saw someone ask "how do you handle invoices when clients pay in crypto?" on Reddit again.
 
-### Tweet B (Social proof angle)
-"How do you handle invoices when clients pay in crypto?"
-
-Saw this question for the 100th time on Reddit.
-
-So I built the answer: paste your wallet → get invoices.
+I got tired of seeing that question so I built the answer.
 
 cryptoslip.xyz
 
-### Tweet C (Feature highlight)
-Your accountant doesn't care that you got paid in USDC on Polygon.
+### Tweet C
+Thing your accountant cares about when you get paid in USDC:
 
-They want a PDF with:
-- EUR/USD amount
-- Correct date
-- Tax ID
-- Line items
+- EUR amount (not "approximately")
+- Exchange rate from that specific date
+- Sequential invoice number
+- Your tax ID
 
-CryptoSlip generates that from your wallet address automatically.
+CryptoSlip generates all of that from your wallet address.
 
-### Tweet D (Crypto discount)
-Hot take: if you're building for crypto users, you should accept crypto.
+### Tweet D
+We charge $9/mo with card and $7/mo with USDC.
 
-CryptoSlip is $9/mo with card.
-Or $7/mo if you pay in USDC.
-
-Crypto-native users get rewarded. Simple.
+Mostly because it'd be weird to build a crypto invoicing tool that doesn't take crypto.
 
 cryptoslip.xyz
 
-### Tweet E (Engagement bait)
-Crypto freelancers: how are you handling invoices right now?
+### Tweet E
+Crypto freelancers, real question: how are you doing invoices right now?
 
-A) Excel spreadsheet
-B) Google Docs template  
-C) Some invoicing tool that doesn't understand crypto
-D) I just... don't
+A) Spreadsheet I'm ashamed of
+B) Google Docs template from 2019
+C) Some tool that doesn't get crypto
+D) I don't want to talk about it
 
-(If you answered anything, check out cryptoslip.xyz)
+### Tweet F
+Building @cryptoslipxyz in public.
 
-### Tweet F (Builder story)
-Building in public 🧵
+Day 1:
+- Landing page: done
+- Can take payments: done
+- Actual product: building it
 
-Day 1 of @cryptoslip:
-- Landing page: ✅
-- Stripe payments: ✅  
-- Crypto payments: ✅
-- Actual product: 🔨 building
+Sell first, build second.
 
-levelsio style. Ship the buy button first, build the product when people pay.
+### Tweet G
+German freelancers getting paid in USDC:
 
-### Tweet G (Specific use case)
-German freelancers getting paid in crypto:
+You still need a Rechnung. With a Rechnungsnummer. And your Steuernummer. And the EUR amount based on the ECB rate from that day.
 
-You still need a Rechnung with:
-- Fortlaufende Rechnungsnummer
-- Steuernummer
-- Leistungszeitraum
-- Nettobetrag in EUR
-
-CryptoSlip generates Kleinunternehmer-compliant invoices from your USDC transactions.
+CryptoSlip handles the Kleinunternehmer stuff.
 
 cryptoslip.xyz 🇩🇪
 
-### Tweet H (Quote tweet style — post as reply to any "how to invoice crypto" tweet)
-This is exactly why we built CryptoSlip.
+### Tweet H (reply to anyone asking about crypto invoicing)
+Built something for exactly this.
 
-Paste wallet → pull transactions → generate tax-compliant invoices.
+Paste your wallet → it pulls transactions → generates invoices with the right FX rates.
 
-From $7/mo if you pay in crypto (obviously).
+$7/mo if you pay in crypto.
 
 cryptoslip.xyz
