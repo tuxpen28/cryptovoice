@@ -1006,18 +1006,27 @@ async function verifyPayment() {
     // Payment verified! Submit to Formspree
     setStatus('Payment verified! Registering your access...', 'success');
 
-    await fetch('https://formspree.io/f/xvgzjqkl', {
+    // Send notification via multiple channels (best effort)
+    // 1. FormSubmit (email notification)
+    fetch('https://formsubmit.co/ajax/tuxclaw@gamersvillage.de', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         email: email,
         txHash: txHash,
         chain: selectedChain,
         type: 'crypto_payment',
         amount: '7 USDC',
-        _subject: 'New CryptoSlip payment: ' + email
+        _subject: '💰 New CryptoSlip payment: ' + email,
+        _captcha: 'false',
+        _template: 'table'
       })
-    }).catch(function() {}); // best effort
+    }).catch(function() {});
+
+    // 2. Store in localStorage as backup
+    var payments = JSON.parse(localStorage.getItem('cryptoslip_payments') || '[]');
+    payments.push({ email: email, txHash: txHash, chain: selectedChain, timestamp: new Date().toISOString() });
+    localStorage.setItem('cryptoslip_payments', JSON.stringify(payments));
 
     // Show success
     document.getElementById('pay-step2').style.display = 'none';
