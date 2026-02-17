@@ -760,20 +760,66 @@
       </div>
     </div>
 
-    <!-- Crypto payment modal -->
+    <!-- Crypto payment flow -->
     <div id="crypto-modal" style="display:none; margin-top: 32px;">
-      <div class="price-card" style="max-width: 480px; margin: 0 auto; text-align: left;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Pay with USDC</h3>
-        <p class="desc">Send exactly <strong style="color: var(--green);">7 USDC</strong> to the address below on Base or Polygon.</p>
-        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; font-family: monospace; font-size: 0.82rem; word-break: break-all; margin-bottom: 16px; color: var(--accent-light);" id="pay-address">
-          0xE12E377414F72a829c3e0C229eD71588A2b6aF96
+      <div class="price-card" style="max-width: 520px; margin: 0 auto; text-align: left;">
+
+        <!-- Step 1: Send payment -->
+        <div id="pay-step1">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem;">1</div>
+            <h3 style="font-size: 1.1rem; margin: 0;">Send 7 USDC</h3>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 16px;">Send exactly <strong style="color: var(--green);">7 USDC</strong> on <strong>Base</strong> or <strong>Polygon</strong> to:</p>
+          <div id="pay-address" style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78rem; word-break: break-all; margin-bottom: 12px; color: var(--accent-light); cursor: pointer; transition: border-color 0.2s;" onclick="copyAddress()">
+            0xE12E377414F72a829c3e0C229eD71588A2b6aF96
+          </div>
+          <button class="btn btn-ghost btn-full" onclick="copyAddress()" id="copy-btn" style="margin-bottom: 20px; font-size: 0.84rem;">📋 Copy Address</button>
+          <button class="btn btn-primary btn-full" onclick="showStep2()" style="font-size: 0.9rem;">I've sent the payment →</button>
         </div>
-        <button class="btn btn-ghost btn-full" onclick="navigator.clipboard.writeText(document.getElementById('pay-address').textContent.trim())" style="margin-bottom: 16px; font-size: 0.84rem;">📋 Copy Address</button>
-        <div style="margin-bottom: 16px;">
-          <label style="font-size: 0.84rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Your email (to receive access)</label>
-          <input type="email" id="crypto-email" placeholder="you@example.com" style="width:100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-family: inherit; outline: none;">
+
+        <!-- Step 2: Verify payment -->
+        <div id="pay-step2" style="display: none;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem;">2</div>
+            <h3 style="font-size: 1.1rem; margin: 0;">Verify your payment</h3>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 0.84rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Your email</label>
+            <input type="email" id="verify-email" placeholder="you@example.com" style="width:100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-family: inherit; outline: none;">
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 0.84rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Transaction hash</label>
+            <input type="text" id="verify-txhash" placeholder="0x..." style="width:100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-family: 'SF Mono', monospace; outline: none;">
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 0.84rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Chain</label>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-ghost chain-btn active-chain" data-chain="base" onclick="selectChain('base')" style="flex:1; justify-content: center; font-size: 0.84rem; padding: 10px;">Base</button>
+              <button class="btn btn-ghost chain-btn" data-chain="polygon" onclick="selectChain('polygon')" style="flex:1; justify-content: center; font-size: 0.84rem; padding: 10px;">Polygon</button>
+            </div>
+          </div>
+
+          <div id="verify-status" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 14px; font-size: 0.84rem; text-align: center;"></div>
+
+          <button class="btn btn-primary btn-full" onclick="verifyPayment()" id="verify-btn" style="font-size: 0.9rem;">Verify Payment 🔍</button>
+
+          <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 12px;">
+            <a href="#" onclick="showStep1(); return false;" style="color: var(--accent-light); text-decoration: none;">← Back to step 1</a>
+          </p>
         </div>
-        <p style="font-size: 0.78rem; color: var(--text-muted); text-align: center;">After sending, we'll detect your payment on-chain and email your access link within minutes.</p>
+
+        <!-- Step 3: Success -->
+        <div id="pay-step3" style="display: none; text-align: center; padding: 20px 0;">
+          <div style="font-size: 3rem; margin-bottom: 12px;">🎉</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 8px; color: var(--green);">Payment verified!</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 8px;">Thank you for your purchase. We'll send your access details to your email shortly.</p>
+          <p style="color: var(--text-muted); font-size: 0.78rem;">Transaction confirmed on-chain ✓</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -801,12 +847,196 @@
 </div>
 
 <script>
+const RECIPIENT = '0xE12E377414F72a829c3e0C229eD71588A2b6aF96'.toLowerCase();
+const MIN_USDC = 6.99; // allow tiny rounding
+const USDC_DECIMALS = 6;
+
+// USDC contract addresses
+const USDC = {
+  base: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+  polygon: '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359'
+};
+
+// Blockscout API endpoints
+const EXPLORERS = {
+  base: 'https://base.blockscout.com/api/v2',
+  polygon: 'https://polygon.blockscout.com/api/v2'
+};
+
+let selectedChain = 'base';
+
 document.getElementById('crypto-btn').addEventListener('click', function(e) {
   e.preventDefault();
   var modal = document.getElementById('crypto-modal');
   modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
-  modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (modal.style.display !== 'none') {
+    modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 });
+
+function copyAddress() {
+  navigator.clipboard.writeText(RECIPIENT).then(function() {
+    document.getElementById('copy-btn').textContent = '✓ Copied!';
+    setTimeout(function() {
+      document.getElementById('copy-btn').textContent = '📋 Copy Address';
+    }, 2000);
+  });
+}
+
+function showStep1() {
+  document.getElementById('pay-step1').style.display = 'block';
+  document.getElementById('pay-step2').style.display = 'none';
+  document.getElementById('pay-step3').style.display = 'none';
+}
+
+function showStep2() {
+  document.getElementById('pay-step1').style.display = 'none';
+  document.getElementById('pay-step2').style.display = 'block';
+  document.getElementById('pay-step3').style.display = 'none';
+}
+
+function selectChain(chain) {
+  selectedChain = chain;
+  document.querySelectorAll('.chain-btn').forEach(function(btn) {
+    btn.classList.remove('active-chain');
+    if (btn.dataset.chain === chain) btn.classList.add('active-chain');
+  });
+}
+
+function setStatus(msg, type) {
+  var el = document.getElementById('verify-status');
+  el.style.display = 'block';
+  el.textContent = msg;
+  if (type === 'error') {
+    el.style.background = 'rgba(255,80,80,0.1)';
+    el.style.border = '1px solid rgba(255,80,80,0.3)';
+    el.style.color = '#ff5050';
+  } else if (type === 'success') {
+    el.style.background = 'rgba(0,212,170,0.1)';
+    el.style.border = '1px solid rgba(0,212,170,0.3)';
+    el.style.color = '#00d4aa';
+  } else {
+    el.style.background = 'rgba(99,91,255,0.1)';
+    el.style.border = '1px solid rgba(99,91,255,0.3)';
+    el.style.color = '#8b83ff';
+  }
+}
+
+async function verifyPayment() {
+  var email = document.getElementById('verify-email').value.trim();
+  var txHash = document.getElementById('verify-txhash').value.trim();
+  var btn = document.getElementById('verify-btn');
+
+  if (!email || !email.includes('@')) {
+    setStatus('Please enter a valid email address.', 'error');
+    return;
+  }
+  if (!txHash || !txHash.match(/^0x[a-fA-F0-9]{64}$/)) {
+    setStatus('Please enter a valid transaction hash (0x...)', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Verifying...';
+  setStatus('Checking transaction on ' + selectedChain + '...', 'info');
+
+  try {
+    var apiBase = EXPLORERS[selectedChain];
+    var resp = await fetch(apiBase + '/transactions/' + txHash);
+
+    if (!resp.ok) {
+      setStatus('Transaction not found on ' + selectedChain + '. Check the hash and chain.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Verify Payment 🔍';
+      return;
+    }
+
+    var tx = await resp.json();
+
+    // Check if tx is confirmed
+    if (!tx.status || tx.status === 'pending') {
+      setStatus('Transaction is still pending. Please wait for confirmation.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Verify Payment 🔍';
+      return;
+    }
+
+    if (tx.status === 'error' || tx.result === 'error') {
+      setStatus('Transaction failed on-chain. Please check and try again.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Verify Payment 🔍';
+      return;
+    }
+
+    // Check token transfers
+    var transfersResp = await fetch(apiBase + '/transactions/' + txHash + '/token-transfers');
+    if (!transfersResp.ok) {
+      setStatus('Could not fetch token transfers. Try again.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Verify Payment 🔍';
+      return;
+    }
+
+    var transfersData = await transfersResp.json();
+    var transfers = transfersData.items || [];
+
+    // Find USDC transfer to our address
+    var usdcAddress = USDC[selectedChain].toLowerCase();
+    var valid = false;
+
+    for (var i = 0; i < transfers.length; i++) {
+      var t = transfers[i];
+      var tokenAddr = (t.token && t.token.address || '').toLowerCase();
+      var to = (t.to && t.to.hash || '').toLowerCase();
+      var amount = parseFloat(t.total && t.total.value || t.value || '0') / Math.pow(10, USDC_DECIMALS);
+
+      if (tokenAddr === usdcAddress && to === RECIPIENT && amount >= MIN_USDC) {
+        valid = true;
+        break;
+      }
+    }
+
+    if (!valid) {
+      setStatus('Could not verify: No USDC transfer of $7+ to our address found in this transaction.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Verify Payment 🔍';
+      return;
+    }
+
+    // Payment verified! Submit to Formspree
+    setStatus('Payment verified! Registering your access...', 'success');
+
+    await fetch('https://formspree.io/f/xvgzjqkl', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        txHash: txHash,
+        chain: selectedChain,
+        type: 'crypto_payment',
+        amount: '7 USDC',
+        _subject: 'New CryptoSlip payment: ' + email
+      })
+    }).catch(function() {}); // best effort
+
+    // Show success
+    document.getElementById('pay-step2').style.display = 'none';
+    document.getElementById('pay-step3').style.display = 'block';
+
+  } catch (err) {
+    setStatus('Network error. Please try again. (' + err.message + ')', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Verify Payment 🔍';
+  }
+}
 </script>
+
+<style>
+.active-chain {
+  border-color: var(--accent) !important;
+  background: var(--bg-card-hover) !important;
+  color: var(--accent-light) !important;
+}
+</style>
 </body>
 </html>
