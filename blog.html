@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Create Professional Invoices for Crypto Payments (2026) — CryptoSlip</title>
+  <meta name="description" content="A practical guide to creating tax-compliant invoices when you get paid in cryptocurrency. Covers exchange rates, country-specific requirements, and templates.">
+  <meta property="og:title" content="How to Create Professional Invoices for Crypto Payments (2026)">
+  <meta property="og:description" content="A practical guide to creating tax-compliant invoices when you get paid in cryptocurrency.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cryptoslip.xyz/blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07070d;
+      --bg-card: #0e0e18;
+      --bg-card-hover: #161625;
+      --border: #1a1a2e;
+      --border-hover: #2d2d50;
+      --text: #e8e8f0;
+      --text-muted: #7878a0;
+      --accent: #635bff;
+      --accent-light: #8b83ff;
+      --accent-glow: rgba(99, 91, 255, 0.25);
+      --green: #00d4aa;
+      --green-muted: #00b894;
+      --green-glow: rgba(0, 212, 170, 0.15);
+      --orange: #ff9f43;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 91, 255, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0, 212, 170, 0.04), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* NAV */
+    nav {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 0.84rem;
+    }
+
+    /* ARTICLE */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 0 80px;
+    }
+
+    .article-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .article h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .article-intro {
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 44px 0 16px;
+    }
+
+    .article h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 32px 0 12px;
+      color: var(--accent-light);
+    }
+
+    .article p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .article ol, .article ul {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin: 0 0 16px 20px;
+    }
+
+    .article li {
+      margin-bottom: 6px;
+    }
+
+    .article strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .article code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      background: var(--bg-card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .article pre {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .article pre code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .article a {
+      color: var(--accent-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(139, 131, 255, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    .article a:hover {
+      border-color: var(--accent-light);
+    }
+
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: center;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .cta-box h3 {
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer span {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .article { padding: 40px 0 60px; }
+      .nav-links { display: none; }
+      footer { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-icon">⚡</div>
+      CryptoSlip
+    </a>
+    <div class="nav-links">
+      <a href="/#roadmap">Roadmap</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog">Blog</a>
+      <a href="https://x.com/cryptoslip" target="_blank">𝕏</a>
+      <a href="/#pricing" class="btn btn-primary btn-sm">Get Access</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <article class="article">
+    <div class="article-meta">February 17, 2026 · 8 min read</div>
+    <h1>How to Create Professional Invoices for Crypto Payments</h1>
+
+    <p class="article-intro">Getting paid in cryptocurrency is fast, borderless, and increasingly common for freelancers. But when tax season arrives, "it's on the blockchain" isn't going to satisfy your accountant. Here's what you actually need to know.</p>
+
+    <p>Whether you're a developer paid in USDC, a designer receiving USDT, or a consultant earning DAI — you need proper invoices. This guide covers what goes on them, how to handle exchange rates, and the country-specific quirks that trip people up.</p>
+
+    <h2>What Your Invoice Needs</h2>
+
+    <p>Regardless of jurisdiction, every crypto payment invoice should include:</p>
+
+    <ol>
+      <li><strong>Your business details</strong> — Name, address, tax ID (VAT number, Steuernummer, EIN, etc.)</li>
+      <li><strong>Client details</strong> — Name, address, their tax ID if applicable</li>
+      <li><strong>Invoice number</strong> — Sequential, no gaps (INV-2026-001, INV-2026-002, etc.)</li>
+      <li><strong>Date</strong> — The date of the transaction, not when you created the invoice</li>
+      <li><strong>Description of services</strong> — What work was performed</li>
+      <li><strong>Amount in fiat</strong> — Even if paid in crypto, your tax authority wants EUR/USD/GBP</li>
+      <li><strong>Exchange rate</strong> — The crypto-to-fiat rate on the transaction date</li>
+      <li><strong>Payment reference</strong> — Transaction hash for your records</li>
+    </ol>
+
+    <h2>The Exchange Rate Problem</h2>
+
+    <p>This is where most freelancers get it wrong. You need the exchange rate <strong>on the date you received the payment</strong>, not:</p>
+
+    <ul>
+      <li>When you converted to fiat</li>
+      <li>The current rate</li>
+      <li>An approximate average</li>
+    </ul>
+
+    <p>For stablecoins (USDC, USDT, DAI), this is usually close to 1:1 USD, but you still need the USD→EUR (or your local currency) rate for that specific date.</p>
+
+    <h2>Country-Specific Requirements</h2>
+
+    <h3>Germany (Kleinunternehmer / §19 UStG)</h3>
+    <ul>
+      <li>Fortlaufende Rechnungsnummer (sequential invoice number)</li>
+      <li>Steuernummer or USt-IdNr.</li>
+      <li>Note: "Gemäß §19 UStG wird keine Umsatzsteuer berechnet" if using Kleinunternehmerregelung</li>
+      <li>Amount in EUR using ECB reference rate on transaction date</li>
+    </ul>
+
+    <h3>EU (with VAT)</h3>
+    <ul>
+      <li>VAT number</li>
+      <li>Reverse charge mechanism for B2B cross-border ("Steuerschuldnerschaft des Leistungsempfängers")</li>
+      <li>Amount in EUR</li>
+    </ul>
+
+    <h3>United States</h3>
+    <ul>
+      <li>EIN or SSN</li>
+      <li>1099-MISC/1099-NEC compatible</li>
+      <li>Amount in USD</li>
+    </ul>
+
+    <h3>United Kingdom</h3>
+    <ul>
+      <li>VAT number (if registered)</li>
+      <li>Amount in GBP</li>
+      <li>HMRC-compliant format</li>
+    </ul>
+
+    <h2>The Manual Way</h2>
+
+    <ol>
+      <li>Go to Etherscan/Polygonscan, find your transaction</li>
+      <li>Note the amount, date, and sender</li>
+      <li>Look up the exchange rate on xe.com or ECB for that date</li>
+      <li>Open your invoice template</li>
+      <li>Fill in all the details</li>
+      <li>Calculate the fiat amount</li>
+      <li>Export as PDF</li>
+      <li>Repeat for every single transaction</li>
+    </ol>
+
+    <p><strong>Time per invoice:</strong> roughly 20–30 minutes.<br>
+    <strong>Monthly time for 10 transactions:</strong> about 4 hours.</p>
+
+    <p>That's fine if you get one or two payments a month. It gets old fast with more than that.</p>
+
+    <h2>Free Invoice Template</h2>
+
+    <p>If you prefer the manual route, here's a template that covers the basics:</p>
+
+    <pre><code>[YOUR COMPANY NAME]
+[Your Address]
+[Tax ID: DE123456789]
+
+INVOICE #INV-2026-001
+Date: 2026-02-15
+
+Bill to:
+[Client Name]
+[Client Address]
+
+Description                    Amount
+─────────────────────────────────────
+Web development services       $5,000.00
+January 2026
+
+Payment received: 5,000 USDC
+Chain: Polygon
+TX: 0xabc...def
+Exchange rate: 1 USD = 0.92 EUR (ECB, 2026-02-15)
+
+Total: €4,600.00
+
+Note: Gemäß §19 UStG wird keine Umsatzsteuer berechnet.</code></pre>
+
+    <h2>Automating It</h2>
+
+    <p>Tools like <a href="https://cryptoslip.xyz">CryptoSlip</a> can pull transactions directly from the blockchain, look up exchange rates for each transaction date, and generate compliant invoices automatically. You paste your wallet address, map senders to clients once, and download PDFs. What takes 20 minutes manually takes about 2 minutes.</p>
+
+    <div class="cta-box">
+      <h3>Skip the spreadsheets</h3>
+      <p>CryptoSlip turns on-chain transactions into tax-compliant invoices. From $7/mo.</p>
+      <a href="https://cryptoslip.xyz/#pricing" class="btn btn-primary">Try CryptoSlip →</a>
+    </div>
+
+    <h2>Key Takeaways</h2>
+
+    <ul>
+      <li>Always create invoices for crypto payments, even stablecoin transfers</li>
+      <li>Use the exchange rate from the <strong>transaction date</strong></li>
+      <li>Keep transaction hashes as payment proof</li>
+      <li>Use sequential invoice numbering with no gaps</li>
+      <li>Pick a method — manual or automated — and stick with it consistently</li>
+    </ul>
+
+  </article>
+</div>
+
+<div class="container">
+  <footer>
+    <span>© 2026 CryptoSlip</span>
+    <div class="footer-links">
+      <a href="https://x.com/cryptoslip" target="_blank">𝕏 Twitter</a>
+      <a href="mailto:hello@cryptoslip.xyz">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
